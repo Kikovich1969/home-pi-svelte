@@ -3,36 +3,27 @@
 </script>
 
 <nav>
-  <div class="icon brand">
-    <div>
-      <img src="/img/woodstock_quad.svg" alt="Home Pi" />
-    </div>
+  <div class="brand">
+    <img src="/img/woodstock_quad.svg" alt="Home Pi" />
   </div>
   <Button buttonIcon="/img/bars-solid.svg" />
-  <!-- <div class="icon burger">
-    <div>
-      <img src="/img/bars-solid.svg" alt="Burger Menu" />
-    </div>
-  </div> -->
 </nav>
 
 <style>
-  .icon {
+  .brand {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
     background-color: transparent;
-    /*border: 1px solid white;*/
     border-radius: 0.2rem;
   }
-  .icon:hover {
-    background-color: #827575;
+  .brand:hover {
+    background-color: #757d82;
     cursor: pointer;
   }
-  .brand img,
-  .burger img {
-    width: 1rem;
+  .brand img {
+    width: 1.5rem;
   }
   nav {
     background-color: #363636;
@@ -40,7 +31,7 @@
     min-height: 3.25rem;
     position: relative;
     display: flex;
-    padding: 1rem;
+    padding: 0.5rem;
     align-items: center;
     justify-content: space-between;
   }
