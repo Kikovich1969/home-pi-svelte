@@ -10,7 +10,7 @@
   };
 </script>
 
-<div class="icon">
+<div class="icon" on:click>
   <div>
     <img src={buttonIcon} alt="Burger Menu" />
   </div>

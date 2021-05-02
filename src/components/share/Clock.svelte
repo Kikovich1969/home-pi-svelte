@@ -12,7 +12,11 @@
   });
 </script>
 
-<div>{hour} : {min < 10 ? `0${min}` : min} : {sec < 10 ? `0${sec}` : sec}</div>
+<div>
+  {hour < 10 ? `0${hour}` : hour} : {min < 10 ? `0${min}` : min} : {sec < 10
+    ? `0${sec}`
+    : sec}
+</div>
 
 <style>
   div {
