@@ -1,8 +1,9 @@
 <script>
   import Button from "./share/Button.svelte";
-  let hideMenu = true;
+  import { fade } from "svelte/transition";
+  let visible = false;
   const toggleMenu = () => {
-    hideMenu = !hideMenu;
+    visible = !visible;
   };
 </script>
 
@@ -13,11 +14,12 @@
     </div>
     <Button buttonIcon="/img/bars-solid.svg" on:click={toggleMenu} />
   </div>
-
-  <div class="nav-menu" class:hide={hideMenu}>
-    <a href="#">Dashboard</a>
-    <a href="#">Settings</a>
-  </div>
+  {#if visible}
+    <div class="nav-menu" transition:fade={{ duration: 100 }}>
+      <a href="#">Dashboard</a>
+      <a href="#">Settings</a>
+    </div>
+  {/if}
 </nav>
 
 <style>
@@ -45,7 +47,7 @@
     cursor: pointer;
   }
   .nav-brand img {
-    width: 1.5rem;
+    width: 1.75rem;
   }
   .nav-menu {
     background-color: white;

@@ -3,13 +3,20 @@
 </script>
 
 <main>
-  <h1>Dashboard</h1>
-  <Clock />
+  <div class="wrapper">
+    <h1>Dashboard</h1>
+    <Clock />
+  </div>
 </main>
 
 <style>
   main {
     flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .wrapper {
+    max-width: 600px;
   }
 
   h1 {
