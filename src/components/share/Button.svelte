@@ -1,22 +1,22 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
+  //import { createEventDispatcher } from "svelte";
+  //const dispatch = createEventDispatcher();
 
-  let buttonText = "";
+  export const buttonText = "";
   export let buttonIcon = "";
+  export let altTxt = "Button";
 
-  const handleClick = () => {
+  /* const handleClick = () => {
     dispatch("doButtonClick");
-  };
+  }; */
 </script>
 
 <div class="icon" on:click>
   <div>
-    <img src={buttonIcon} alt="Burger Menu" />
+    <img src={buttonIcon} alt="{altTxt}" />
   </div>
 </div>
 
-<!-- <button on:click={handleClick} class:promo={isPromo}>{buttonText}</button> -->
 <style>
   .icon {
     display: flex;
@@ -28,6 +28,7 @@
   }
   .icon:hover {
     background-color: #757d82;
+    cursor: pointer;
   }
   .icon img {
     width: 1rem;

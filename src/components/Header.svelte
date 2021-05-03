@@ -12,7 +12,7 @@
     <div class="nav-brand">
       <img src="/img/woodstock_quad.svg" alt="Home Pi" />
     </div>
-    <Button buttonIcon="/img/bars-solid.svg" on:click={toggleMenu} />
+    <Button buttonIcon="/img/bars-solid.svg" altTxt="Burger Menu" on:click={toggleMenu} />
   </div>
   {#if visible}
     <div class="nav-menu" transition:fade={{ duration: 100 }}>
@@ -52,9 +52,6 @@
   .nav-menu {
     background-color: white;
     text-align: right;
-  }
-  .hide {
-    display: none;
   }
   .nav-menu a {
     display: block;
