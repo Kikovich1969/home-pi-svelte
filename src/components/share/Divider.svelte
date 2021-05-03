@@ -1,17 +1,11 @@
 <script>
-    export let dataContent = "Devider";
+    export let deviderText = "Devider";
 </script>
 
-<!-- <div class="divider" data-content={dataContent} /> -->
-
 <div class="divider">
-    <div class="devider-line">
-        <hr />
-    </div>
-    <div class="devider-text">{dataContent}</div>
-    <div class="devider-line">
-        <hr />
-    </div>
+    <div class="devider-line"><hr /></div>
+    <div class="devider-text">{deviderText}</div>
+    <div class="devider-line"><hr /></div>
 </div>
 
 <style>

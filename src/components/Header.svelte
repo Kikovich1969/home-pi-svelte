@@ -12,7 +12,17 @@
     <div class="nav-brand">
       <img src="/img/woodstock_quad.svg" alt="Home Pi" />
     </div>
-    <Button buttonIcon="/img/bars-solid.svg" altTxt="Burger Menu" on:click={toggleMenu} />
+    <div class="burger-menu-wrapper">
+      <Button
+        buttonIcon="/img/bars-solid.svg"
+        altTxt="Burger Menu"
+        on:click={toggleMenu}
+      />
+    </div>
+    <div class="nav-menu-horizontal">
+      <a href="#">Dashboard</a>
+      <a href="#">Settings</a>
+    </div>
   </div>
   {#if visible}
     <div class="nav-menu" transition:fade={{ duration: 100 }}>
@@ -23,11 +33,28 @@
 </nav>
 
 <style>
+  @media screen and (min-width: 769px) {
+    .burger-menu-wrapper {
+      display: none;
+    }
+    .nav-menu-horizontal {
+      display: block !important;
+    }
+  }
   nav {
     background-color: #363636;
     color: #fff;
     min-height: 3.25rem;
     position: relative;
+  }
+  .nav-menu-horizontal {
+    display: none;
+  }
+  .nav-menu-horizontal a {
+    color: white;
+    display: inline-block;
+    padding: 0.5rem;
+    text-decoration: none;
   }
   .nav-bar {
     display: flex;

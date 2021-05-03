@@ -1,13 +1,15 @@
 <script>
   import Clock from "./share/Clock.svelte";
   import Divider from "./share/Divider.svelte";
+  import Blinds from "./Blinds.svelte";
 </script>
 
 <main>
   <div class="wrapper">
     <h1>Dashboard</h1>
     <Clock />
-    <Divider dataContent='Blinds' />
+    <Divider deviderText='Markisen' />
+    <Blinds />
   </div>
 </main>
 
