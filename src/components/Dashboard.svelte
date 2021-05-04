@@ -1,6 +1,5 @@
 <script>
     import { fade } from 'svelte/transition';
-    import Clock from "./share/Clock.svelte";
     import Divider from "./share/Divider.svelte";
     import Blinds from "./Blinds.svelte";
     import Heatings from "./Heatings.svelte";
@@ -9,7 +8,6 @@
 <main in:fade>
     <div class="wrapper">
         <h1>Dashboard</h1>
-        <Clock />
         <Divider deviderText="Markisen" />
         <Blinds />
         <Divider deviderText="Heizungen" />

@@ -1,12 +1,10 @@
 <script>
   import { fade } from 'svelte/transition';
-  import Clock from "./share/Clock.svelte";
 </script>
 
 <main in:fade>
   <div class="wrapper">
     <h1>Settings</h1>
-    <Clock />
   </div>
 </main>
 

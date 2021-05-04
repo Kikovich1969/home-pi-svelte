@@ -3,6 +3,7 @@
   const dispatch = createEventDispatcher();
 
   import Button from "./share/Button.svelte";
+  import Clock from "./share/Clock.svelte";
   import { fade } from "svelte/transition";
 
   let visible = false;
@@ -19,6 +20,7 @@
     <div class="nav-brand">
       <a on:click={setCurrentPage}><img src="/img/woodstock_quad.svg" alt="Home Pi" data-target="Dashboard" /></a>
     </div>
+    <Clock />
     <div class="burger-menu-wrapper">
       <Button
         buttonIcon="/img/bars-solid.svg"
