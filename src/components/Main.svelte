@@ -2,6 +2,7 @@
   import Clock from "./share/Clock.svelte";
   import Divider from "./share/Divider.svelte";
   import Blinds from "./Blinds.svelte";
+  import Heatings from "./Heatings.svelte";
 </script>
 
 <main>
@@ -10,6 +11,8 @@
     <Clock />
     <Divider deviderText='Markisen' />
     <Blinds />
+    <Divider deviderText='Heizungen' />
+    <Heatings />
   </div>
 </main>
 

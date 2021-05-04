@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="182px" height="235px" viewBox="0 0 182 235" enable-background="new 0 0 182 235" xml:space="preserve">
+<g>
+	<path fill="#FFFFFF" d="M176.167,0H5.833C2.611,0,0,2.611,0,5.833v0.334C0,9.389,2.611,12,5.833,12H140v12H12.995L8,31h132v17
+		H12.995L8,55h132v17H12.995L8,79h132v17H12.995L8,103h132v17H12.995L8,127h132v17H12.995L8,151h132v17H12.995L8,175h132v17H12.995
+		L8,199h132v12l-11.57,24h26.855L143,211v-12v-7v-17v-7v-17v-7v-17v-7v-17v-7V79v-7V55v-7V31v-7V12h33.167
+		C179.389,12,182,9.389,182,6.167V5.833C182,2.611,179.389,0,176.167,0z M150.43,232h-17.145l8.572-17.146L150.43,232z"/>
+	<polygon fill="#FFFFFF" points="149,24 149,31 173,31 168.005,24"/>
+	<polygon fill="#FFFFFF" points="149,48 149,55 173,55 168.005,48"/>
+	<polygon fill="#FFFFFF" points="149,72 149,79 173,79 168.005,72"/>
+	<polygon fill="#FFFFFF" points="149,96 149,103 173,103 168.005,96"/>
+	<polygon fill="#FFFFFF" points="149,120 149,127 173,127 168.005,120"/>
+	<polygon fill="#FFFFFF" points="149,144 149,151 173,151 168.005,144"/>
+	<polygon fill="#FFFFFF" points="149,168 149,175 173,175 168.005,168"/>
+	<polygon fill="#FFFFFF" points="149,199 173,199 168.005,192 149,192"/>
+</g>
+</svg>

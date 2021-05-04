@@ -13,7 +13,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 2rem 0;
+        margin: 1.5rem 0;
     }
 
     .devider-line {
