@@ -1,10 +1,14 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
   import Button from "./share/Button.svelte";
   import { fade } from "svelte/transition";
+
   let visible = false;
-  const toggleMenu = () => {
-    visible = !visible;
-  };
+
+  const setTitle = e => { dispatch("setTitle", e) };
+  const toggleMenu = () => { visible = !visible };
 </script>
 
 <nav>
@@ -20,21 +24,22 @@
       />
     </div>
     <div class="nav-menu-horizontal">
-      <a href="#">Dashboard</a>
-      <a href="#">Settings</a>
+      <a href="#" on:click={setTitle}>Dashboard</a>
+      <a href="#" on:click={setTitle}>Settings</a>
     </div>
   </div>
   {#if visible}
     <div class="nav-menu" transition:fade={{ duration: 100 }}>
-      <a href="#">Dashboard</a>
-      <a href="#">Settings</a>
+      <a href="#" on:click={setTitle}>Dashboard</a>
+      <a href="#" on:click={setTitle}>Settings</a>
     </div>
   {/if}
 </nav>
 
 <style>
   @media screen and (min-width: 769px) {
-    .burger-menu-wrapper {
+    .burger-menu-wrapper,
+    .nav-menu {
       display: none;
     }
     .nav-menu-horizontal {

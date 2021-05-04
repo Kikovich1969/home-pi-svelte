@@ -24,6 +24,7 @@
   }
   .wrapper {
     max-width: 600px;
+    padding: 0 1rem;
   }
 
   h1 {
