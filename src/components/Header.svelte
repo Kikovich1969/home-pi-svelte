@@ -7,14 +7,17 @@
 
   let visible = false;
 
-  const setTitle = e => { dispatch("setTitle", e) };
+  const setCurrentPage = (e) => {
+    dispatch("setCurrentPage", e);
+    visible = false;
+  };
   const toggleMenu = () => { visible = !visible };
 </script>
 
 <nav>
   <div class="nav-bar">
     <div class="nav-brand">
-      <img src="/img/woodstock_quad.svg" alt="Home Pi" />
+      <a on:click={setCurrentPage}><img src="/img/woodstock_quad.svg" alt="Home Pi" data-target="Dashboard" /></a>
     </div>
     <div class="burger-menu-wrapper">
       <Button
@@ -24,14 +27,16 @@
       />
     </div>
     <div class="nav-menu-horizontal">
-      <a href="#" on:click={setTitle}>Dashboard</a>
-      <a href="#" on:click={setTitle}>Settings</a>
+      <a on:click={setCurrentPage} data-target="Dashboard">Dashboard</a>
+      <a on:click={setCurrentPage} data-target="Settings">Settings</a>
+      <a on:click={setCurrentPage} data-target="History">History</a>
     </div>
   </div>
   {#if visible}
     <div class="nav-menu" transition:fade={{ duration: 100 }}>
-      <a href="#" on:click={setTitle}>Dashboard</a>
-      <a href="#" on:click={setTitle}>Settings</a>
+      <a on:click={setCurrentPage} data-target="Dashboard">Dashboard</a>
+      <a on:click={setCurrentPage} data-target="Settings">Settings</a>
+      <a on:click={setCurrentPage} data-target="History">History</a>
     </div>
   {/if}
 </nav>
@@ -60,6 +65,7 @@
     display: inline-block;
     padding: 0.5rem;
     text-decoration: none;
+    cursor: pointer;
   }
   .nav-bar {
     display: flex;
@@ -90,5 +96,6 @@
     color: #4a4a4a;
     text-decoration: none;
     padding: 0.5rem 0.75rem;
+    cursor: pointer;
   }
 </style>

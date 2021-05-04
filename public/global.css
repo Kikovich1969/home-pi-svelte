@@ -85,5 +85,6 @@ body {
 body#app {
 	display: flex;
 	min-height: 100vh;
+	min-width: 350px;
 	flex-direction: column;
 }

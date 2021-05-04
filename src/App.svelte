@@ -4,15 +4,17 @@
 	import Footer from './components/Footer.svelte';
 	
 	let year = new Date().getFullYear();
-	let title = 'Dashboard';
+	let currentPage = 'Dashboard';
 
-	const setTitle = e => { title = e.detail.target.innerText; }
+	const setCurrentPage = e => {
+		currentPage = e.detail.srcElement.dataset.target;
+	}
 </script>
 
 <svelte:head>
-	<title>Home Pi | {title}</title>
+	<title>Home Pi | {currentPage}</title>
 </svelte:head>
 
-<Header on:setTitle={setTitle} />
-<Main />
+<Header on:setCurrentPage={setCurrentPage} />
+<Main {currentPage} />
 <Footer {year} />
