@@ -1,36 +1,33 @@
 <script>
-  //import { createEventDispatcher } from "svelte";
-  //const dispatch = createEventDispatcher();
-
-  export const buttonText = "";
+  export let buttonText = "";
   export let buttonIcon = "";
   export let altTxt = "Button";
-
-  /* const handleClick = () => {
-    dispatch("doButtonClick");
-  }; */
 </script>
 
-<div class="icon" on:click>
+<div class="button" on:click>
   <div>
-    <img src={buttonIcon} alt="{altTxt}" />
+    {#if buttonIcon !== ""}
+      <img src={buttonIcon} alt={altTxt} />
+    {/if}
+    {buttonText}
   </div>
 </div>
 
 <style>
-  .icon {
+  .button {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
     background-color: transparent;
     border-radius: 0.2rem;
+    border: 1px solid #4a4a4a;
   }
-  .icon:hover {
+  .button:hover {
     background-color: #757d82;
     cursor: pointer;
   }
-  .icon img {
+  .button img {
     width: 1rem;
   }
 </style>
