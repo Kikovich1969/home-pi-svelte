@@ -1,5 +1,6 @@
 <script>
   import Button from "./share/Button.svelte";
+  import Icon from './share/icons/Menu.svelte';
 </script>
 
 <div id="blinds">
