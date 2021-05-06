@@ -1,9 +1,11 @@
 <script>
   /* Defaults */
+  export let icon = "";
   export let backgroundColor = "white";
   export let borderColor = "black";
   export let color = "black";
   export let size = "medium";
+  export let label = "";
 </script>
 
 <div class="buttons" on:click>
@@ -11,7 +13,10 @@
     class="button {size}"
     style="background-color: {backgroundColor}; border-color: {borderColor}; color: {color};"
   >
-    <slot />
+    {#if icon !== ""}
+      <span class="material-icons">{icon}</span>
+    {/if}
+    {label}
   </div>
 </div>
 
@@ -34,6 +39,8 @@
     padding-left: 0.6rem;
     padding-right: 0.6rem;
     border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
   }
   .large {
     font-size: 1.3rem;

@@ -6,18 +6,21 @@
     borderColor: "#dbdbdb",
     color: "#363636",
     size: "medium",
+    label: "Open",
   };
   let buttonClose = {
     backgroundColor: "white",
     borderColor: "#dbdbdb",
     color: "#363636",
     size: "medium",
+    label: "Close",
   };
   let buttonSet = {
     backgroundColor: "white",
     borderColor: "#dbdbdb",
     color: "#363636",
     size: "medium",
+    label: "Set",
   };
 </script>
 
@@ -42,9 +45,9 @@
       0.6 Watt <img class="icon" src="/img/plug-solid.svg" width="9" alt="Plug" />
     </p>
     <section class="blind-buttons">
-      <Button {...buttonOpen}>Open</Button>
-      <Button {...buttonClose}>Close</Button>
-      <Button {...buttonSet}>Set</Button>
+      <Button {...buttonOpen} />
+      <Button {...buttonClose} />
+      <Button {...buttonSet} />
     </section>
   </div>
   <div class="blind-slider">
