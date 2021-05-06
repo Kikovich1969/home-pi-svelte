@@ -1,6 +1,27 @@
 <script>
   import Button from "./share/Button.svelte";
-  import Icon from './share/icons/Menu.svelte';
+  import Icon from "./share/icons/Menu.svelte";
+  let buttonOpen = {
+    icon: false,
+    svg: "",
+    backgroundColor: "white",
+    color: "black",
+    size: "medium",
+  };
+  let buttonClose = {
+    icon: false,
+    svg: "",
+    backgroundColor: "white",
+    color: "black",
+    size: "medium",
+  };
+  let buttonSet = {
+    icon: false,
+    svg: "",
+    backgroundColor: "white",
+    color: "black",
+    size: "medium",
+  };
 </script>
 
 <div id="blinds">
@@ -17,12 +38,26 @@
 <div id="blind-settings">
   <h3>Arbeitszimmer</h3>
   <div class="blind-controls">
-    <p>Dim 100 <img class="icon" src="/img/percentage-solid.svg" width="9" alt="Percent" /></p>
-    <p>0.6 Watt <img class="icon" src="/img/plug-solid.svg" width="9" alt="Plug" /></p>
+    <p>
+      Dim 100 <img
+        class="icon"
+        src="/img/percentage-solid.svg"
+        width="9"
+        alt="Percent"
+      />
+    </p>
+    <p>
+      0.6 Watt <img
+        class="icon"
+        src="/img/plug-solid.svg"
+        width="9"
+        alt="Plug"
+      />
+    </p>
     <section class="blind-buttons">
-      <Button buttonText="Open" />
-      <Button buttonText="Close" />
-      <Button buttonText="Set" />
+      <Button {...buttonOpen}>Open</Button>
+      <Button {...buttonClose}>Close</Button>
+      <Button {...buttonSet}>Set</Button>
     </section>
   </div>
   <div class="blind-slider">
