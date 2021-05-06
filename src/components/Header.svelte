@@ -3,9 +3,17 @@
   const dispatch = createEventDispatcher();
 
   import Button from "./share/Button.svelte";
-  import Burger from "./share/icons/Menu.svelte";
   import Clock from "./share/Clock.svelte";
   import { fade } from "svelte/transition";
+
+  let burger = {
+    icon: "menu",
+    backgroundColor: "transparent",
+    borderColor: "#363636",
+    color: "white",
+    size: "medium",
+    label: "",
+  };
 
   let visible = false;
 
@@ -27,8 +35,7 @@
     </div>
     <Clock />
     <div class="burger-menu-wrapper">
-      <!-- <Burger on:click={toggleMenu} /> -->
-      <span class="material-icons" on:click={toggleMenu}>menu</span>
+      <Button {...burger} on:click={toggleMenu} />
     </div>
     <div class="nav-menu-horizontal">
       <a on:click={setCurrentPage} data-target="Dashboard">Dashboard</a>
@@ -101,5 +108,9 @@
     text-decoration: none;
     padding: 0.5rem 0.75rem;
     cursor: pointer;
+  }
+  .burger-menu-wrapper {
+    display: flex;
+    align-items: center;
   }
 </style>
