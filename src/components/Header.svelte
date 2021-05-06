@@ -3,6 +3,7 @@
   const dispatch = createEventDispatcher();
 
   import Button from "./share/Button.svelte";
+  import Burger from "./share/icons/Menu.svelte";
   import Clock from "./share/Clock.svelte";
   import { fade } from "svelte/transition";
 
@@ -12,21 +13,22 @@
     dispatch("setCurrentPage", e);
     visible = false;
   };
-  const toggleMenu = () => { visible = !visible };
+  const toggleMenu = () => {
+    visible = !visible;
+  };
 </script>
 
 <nav>
   <div class="nav-bar">
     <div class="nav-brand">
-      <a on:click={setCurrentPage}><img src="/img/woodstock_quad.svg" alt="Home Pi" data-target="Dashboard" /></a>
+      <a on:click={setCurrentPage}>
+        <img src="/img/woodstock_quad.svg" alt="Home Pi" data-target="Dashboard" />
+      </a>
     </div>
     <Clock />
     <div class="burger-menu-wrapper">
-      <Button
-        buttonIcon="/img/bars-solid.svg"
-        altTxt="Burger Menu"
-        on:click={toggleMenu}
-      />
+      <!-- <Burger on:click={toggleMenu} /> -->
+      <span class="material-icons" on:click={toggleMenu}>menu</span>
     </div>
     <div class="nav-menu-horizontal">
       <a on:click={setCurrentPage} data-target="Dashboard">Dashboard</a>

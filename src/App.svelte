@@ -1,18 +1,19 @@
 <script>
-	import Header from './components/Header.svelte';
-	import Main from './components/Main.svelte';
-	import Footer from './components/Footer.svelte';
-	
-	let year = new Date().getFullYear();
-	let currentPage = 'Dashboard';
+  import Header from "./components/Header.svelte";
+  import Main from "./components/Main.svelte";
+  import Footer from "./components/Footer.svelte";
 
-	const setCurrentPage = e => {
-		currentPage = e.detail.srcElement.dataset.target;
-	}
+  let year = new Date().getFullYear();
+  let currentPage = "Dashboard";
+
+  const setCurrentPage = (e) => {
+    currentPage = e.detail.srcElement.dataset.target;
+  };
 </script>
 
 <svelte:head>
-	<title>Home Pi | {currentPage}</title>
+  <title>Home Pi | {currentPage}</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </svelte:head>
 
 <Header on:setCurrentPage={setCurrentPage} />

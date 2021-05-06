@@ -1,25 +1,22 @@
 <script>
   import Button from "./share/Button.svelte";
-  import Icon from "./share/icons/Menu.svelte";
+
   let buttonOpen = {
-    icon: false,
-    svg: "",
     backgroundColor: "white",
-    color: "black",
+    borderColor: "#dbdbdb",
+    color: "#363636",
     size: "medium",
   };
   let buttonClose = {
-    icon: false,
-    svg: "",
     backgroundColor: "white",
-    color: "black",
+    borderColor: "#dbdbdb",
+    color: "#363636",
     size: "medium",
   };
   let buttonSet = {
-    icon: false,
-    svg: "",
     backgroundColor: "white",
-    color: "black",
+    borderColor: "#dbdbdb",
+    color: "#363636",
     size: "medium",
   };
 </script>
@@ -39,20 +36,10 @@
   <h3>Arbeitszimmer</h3>
   <div class="blind-controls">
     <p>
-      Dim 100 <img
-        class="icon"
-        src="/img/percentage-solid.svg"
-        width="9"
-        alt="Percent"
-      />
+      Dim 100 <img class="icon" src="/img/percentage-solid.svg" width="9" alt="Percent" />
     </p>
     <p>
-      0.6 Watt <img
-        class="icon"
-        src="/img/plug-solid.svg"
-        width="9"
-        alt="Plug"
-      />
+      0.6 Watt <img class="icon" src="/img/plug-solid.svg" width="9" alt="Plug" />
     </p>
     <section class="blind-buttons">
       <Button {...buttonOpen}>Open</Button>
