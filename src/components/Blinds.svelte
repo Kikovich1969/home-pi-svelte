@@ -22,6 +22,13 @@
     size: "medium",
     label: "Set",
   };
+  let buttonLock = {
+    backgroundColor: "white",
+    borderColor: "#dbdbdb",
+    color: "#363636",
+    size: "medium",
+    icon: "lock_open",
+  };
 </script>
 
 <div id="blinds">
@@ -55,7 +62,7 @@
   </div>
 </div>
 <div class="bracket">
-  <button><img src="/img/lock-open-solid.svg" width="9" alt="Lock" /></button>
+  <Button {...buttonLock} />
 </div>
 
 <style>
@@ -114,7 +121,7 @@
     text-align: center;
     max-height: 30px;
   }
-  .bracket button {
+  .bracket div {
     position: relative;
     bottom: -10px;
   }
