@@ -56,7 +56,7 @@
   @media screen and (min-width: 769px) {
     .burger-menu-wrapper,
     .nav-menu {
-      display: none;
+      display: none !important;
     }
     .nav-menu-horizontal {
       display: block !important;
