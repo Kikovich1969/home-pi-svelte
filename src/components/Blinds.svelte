@@ -1,6 +1,28 @@
 <script>
   import Button from "./share/Button.svelte";
   import { fade } from "svelte/transition";
+  import { each } from "svelte/internal";
+
+  let blinds = [
+    {
+      id: 1,
+      room: "Gästezimmer",
+      dim: 64,
+      power: 0.6,
+    },
+    {
+      id: 2,
+      room: "Schlafzimmer",
+      dim: 80,
+      power: 0.6,
+    },
+    {
+      id: 3,
+      room: "Arbeitszimmer",
+      dim: 75,
+      power: 0,
+    },
+  ];
 
   let visible = false;
 
@@ -11,19 +33,24 @@
 </script>
 
 <div id="blinds">
-  <div class="blind" on:click={toggleSetting}>
-    <img src="/img/blinds-0.svg" alt="Rollo Gästezimmer" />
-  </div>
-
-  <div class="blind">
-    <img src="/img/blinds-1.2.svg" alt="Rollo Schlafzimmer" />
-  </div>
-  <div class="blind">
-    <img src="/img/blinds-1.svg" alt="Rollo Arbeitszimmer" />
-  </div>
+  {#each blinds as blind}
+    <div class="blind" on:click={toggleSetting}>
+      {#if blind.dim === 0}
+        <img src="/img/blinds-0.svg" alt="Rollo Gästezimmer" />
+      {:else if blind.dim > 0 && blind.dim <= 25}
+        <img src="/img/blinds-25.svg" alt="Rollo Gästezimmer" />
+      {:else if blind.dim > 25 && blind.dim <= 50}
+        <img src="/img/blinds-50.svg" alt="Rollo Gästezimmer" />
+      {:else if blind.dim > 50 && blind.dim <= 75}
+        <img src="/img/blinds-75.svg" alt="Rollo Gästezimmer" />
+      {:else}
+        <img src="/img/blinds-100.svg" alt="Rollo Gästezimmer" />
+      {/if}
+    </div>
+  {/each}
 </div>
 {#if visible}
-  <div id="blind-settings" transition:fade>
+  <div id="blind-settings" in:fade>
     <h3>Arbeitszimmer</h3>
     <div class="blind-controls">
       <p>
