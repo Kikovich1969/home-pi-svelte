@@ -33,7 +33,7 @@
 </script>
 
 <div id="blinds">
-  {#each blinds as blind}
+  {#each blinds as blind (blind.id)}
     <div class="blind" on:click={toggleSetting}>
       {#if blind.dim === 0}
         <img src="/img/blinds-0.svg" alt="Rollo Gästezimmer" />
