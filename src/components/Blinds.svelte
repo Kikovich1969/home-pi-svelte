@@ -1,68 +1,50 @@
 <script>
   import Button from "./share/Button.svelte";
+  import { fade } from "svelte/transition";
 
-  let buttonOpen = {
-    backgroundColor: "white",
-    borderColor: "#dbdbdb",
-    color: "#363636",
-    size: "medium",
-    label: "Open",
-  };
-  let buttonClose = {
-    backgroundColor: "white",
-    borderColor: "#dbdbdb",
-    color: "#363636",
-    size: "medium",
-    label: "Close",
-  };
-  let buttonSet = {
-    backgroundColor: "white",
-    borderColor: "#dbdbdb",
-    color: "#363636",
-    size: "medium",
-    label: "Set",
-  };
-  let buttonLock = {
-    backgroundColor: "white",
-    borderColor: "#dbdbdb",
-    color: "#363636",
-    size: "medium",
-    icon: "lock_open",
+  let visible = false;
+
+  let toggleSetting = () => {
+    console.log("Toggle Settings");
+    visible = !visible;
   };
 </script>
 
 <div id="blinds">
+  <div class="blind" on:click={toggleSetting}>
+    <img src="/img/blinds-0.svg" alt="Rollo Gästezimmer" />
+  </div>
+
   <div class="blind">
-    <img src="/img/blinds-0.svg" alt="" />
+    <img src="/img/blinds-1.2.svg" alt="Rollo Schlafzimmer" />
   </div>
   <div class="blind">
-    <img src="/img/blinds-1.2.svg" alt="" />
-  </div>
-  <div class="blind">
-    <img src="/img/blinds-1.svg" alt="" />
+    <img src="/img/blinds-1.svg" alt="Rollo Arbeitszimmer" />
   </div>
 </div>
-<div id="blind-settings">
-  <h3>Arbeitszimmer</h3>
-  <div class="blind-controls">
-    <p>
-      Dim 100 <img class="icon" src="/img/percentage-solid.svg" width="9" alt="Percent" />
-    </p>
-    <p>
-      0.6 Watt <img class="icon" src="/img/plug-solid.svg" width="9" alt="Plug" />
-    </p>
-    <section class="blind-buttons">
-      <Button {...buttonOpen} />
-      <Button {...buttonClose} />
-      <Button {...buttonSet} />
-    </section>
+{#if visible}
+  <div id="blind-settings" transition:fade>
+    <h3>Arbeitszimmer</h3>
+    <div class="blind-controls">
+      <p>
+        Dim 100 <img class="icon" src="/img/percentage-solid.svg" width="9" alt="Percent" />
+      </p>
+      <p>
+        0.6 Watt <img class="icon" src="/img/plug-solid.svg" width="9" alt="Plug" />
+      </p>
+      <section class="blind-buttons">
+        <Button label="Open" />
+        <Button label="Close" />
+        <Button label="Set" />
+      </section>
+    </div>
+    <div class="blind-slider">
+      <input step="10" min="0" max="100" value="0" type="range" />
+    </div>
   </div>
-  <div class="blind-slider">
-    <input step="10" min="0" max="100" value="0" type="range" />
-  </div>
-</div>
+{/if}
 <div class="bracket">
-  <Button {...buttonLock} />
+  <Button icon="lock_open" additionalStyles="position: relative; top: 10px;" />
 </div>
 
 <style>
@@ -78,6 +60,7 @@
     padding: 0.7rem;
     margin-bottom: 0.5rem;
     border-radius: 6px;
+    cursor: pointer;
   }
   .blind img {
     width: 100%;
@@ -116,7 +99,7 @@
     border-left: 1px solid white;
     border-right: 1px solid white;
     border-bottom: 1px solid white;
-    width: 62%;
+    width: 70%;
     margin: 0.2rem auto 1rem auto;
     text-align: center;
     max-height: 30px;

@@ -11,7 +11,7 @@
     backgroundColor: "transparent",
     borderColor: "#363636",
     color: "white",
-    size: "medium",
+    size: "large",
     label: "",
   };
 
