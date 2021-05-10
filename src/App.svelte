@@ -6,6 +6,27 @@
   let year = new Date().getFullYear();
   let currentPage = "Dashboard";
 
+  let blinds = [
+    {
+      id: 1,
+      room: "Gästezimmer",
+      dim: 100,
+      power: 0.6,
+    },
+    {
+      id: 2,
+      room: "Schlafzimmer",
+      dim: 100,
+      power: 0.6,
+    },
+    {
+      id: 3,
+      room: "Arbeitszimmer",
+      dim: 75,
+      power: 0,
+    },
+  ];
+
   const setCurrentPage = (e) => {
     currentPage = e.detail.srcElement.dataset.target;
   };
@@ -17,5 +38,5 @@
 </svelte:head>
 
 <Header on:setCurrentPage={setCurrentPage} />
-<Main {currentPage} />
+<Main {currentPage} {blinds} />
 <Footer {year} />

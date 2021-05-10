@@ -3,13 +3,15 @@
     import Divider from "./share/Divider.svelte";
     import Blinds from "./Blinds.svelte";
     import Heatings from "./Heatings.svelte";
+
+    export let blinds;
 </script>
 
 <main in:fade>
     <div class="wrapper">
         <h1>Dashboard</h1>
         <Divider deviderText="Markisen" />
-        <Blinds />
+        <Blinds {blinds} />
         <Divider deviderText="Heizungen" />
         <Heatings />
     </div>

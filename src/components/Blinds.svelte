@@ -1,28 +1,7 @@
 <script>
   import Button from "./share/Button.svelte";
   import { fade } from "svelte/transition";
-  import { each } from "svelte/internal";
-
-  let blinds = [
-    {
-      id: 1,
-      room: "Gästezimmer",
-      dim: 64,
-      power: 0.6,
-    },
-    {
-      id: 2,
-      room: "Schlafzimmer",
-      dim: 80,
-      power: 0.6,
-    },
-    {
-      id: 3,
-      room: "Arbeitszimmer",
-      dim: 75,
-      power: 0,
-    },
-  ];
+  export let blinds;
 
   let visible = false;
 
