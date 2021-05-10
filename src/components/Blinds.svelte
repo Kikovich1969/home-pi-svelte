@@ -28,15 +28,60 @@
     </div>
   {/each}
 </div>
-{#if visible}
+
+{#each blinds as blind (blind.id)}
+  {#if visible}
+    <div id="blind-settings" in:fade>
+      <h3>{blind.room}</h3>
+      <div class="blind-controls">
+        <p>
+          Dim {blind.dim} <img
+            class="icon"
+            src="/img/percentage-solid.svg"
+            width="9"
+            alt="Percent"
+          />
+        </p>
+        <p>
+          {blind.power} Watt <img
+            class="icon"
+            src="/img/plug-solid.svg"
+            width="9"
+            alt="Plug"
+          />
+        </p>
+        <section class="blind-buttons">
+          <Button label="Open" />
+          <Button label="Close" />
+          <Button label="Set" />
+        </section>
+      </div>
+      <div class="blind-slider">
+        <input step="10" min="0" max="100" value="0" type="range" />
+      </div>
+    </div>
+  {/if}
+{/each}
+
+<!-- {#if visible}
   <div id="blind-settings" in:fade>
     <h3>Arbeitszimmer</h3>
     <div class="blind-controls">
       <p>
-        Dim 100 <img class="icon" src="/img/percentage-solid.svg" width="9" alt="Percent" />
+        Dim 100 <img
+          class="icon"
+          src="/img/percentage-solid.svg"
+          width="9"
+          alt="Percent"
+        />
       </p>
       <p>
-        0.6 Watt <img class="icon" src="/img/plug-solid.svg" width="9" alt="Plug" />
+        0.6 Watt <img
+          class="icon"
+          src="/img/plug-solid.svg"
+          width="9"
+          alt="Plug"
+        />
       </p>
       <section class="blind-buttons">
         <Button label="Open" />
@@ -48,7 +93,7 @@
       <input step="10" min="0" max="100" value="0" type="range" />
     </div>
   </div>
-{/if}
+{/if} -->
 <div class="bracket">
   <Button icon="lock_open" additionalStyles="position: relative; top: 10px;" />
 </div>
