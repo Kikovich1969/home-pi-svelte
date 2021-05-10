@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+
   const dispatch = createEventDispatcher();
 
   import Button from "./share/Button.svelte";
@@ -30,10 +31,16 @@
   <div class="nav-bar">
     <div class="nav-brand">
       <a on:click={setCurrentPage}>
-        <img src="/img/woodstock_quad.svg" alt="Home Pi" data-target="Dashboard" />
+        <img
+          src="/img/woodstock_quad.svg"
+          alt="Home Pi"
+          data-target="Dashboard"
+        />
       </a>
     </div>
-    <Clock />
+    <div class="header-clock">
+      <Clock />
+    </div>
     <div class="burger-menu-wrapper">
       <Button {...burger} on:click={toggleMenu} />
     </div>
@@ -55,7 +62,8 @@
 <style>
   @media screen and (min-width: 769px) {
     .burger-menu-wrapper,
-    .nav-menu {
+    .nav-menu,
+    .header-clock {
       display: none !important;
     }
     .nav-menu-horizontal {

@@ -4,7 +4,7 @@
   import Footer from "./components/Footer.svelte";
 
   let year = new Date().getFullYear();
-  let currentPage = "Dashboard";
+  let currentPage = "Settings";
 
   let blinds = [
     {

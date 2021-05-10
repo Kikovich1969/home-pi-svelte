@@ -1,24 +1,12 @@
 <script>
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
+  import Button from "./share/Button.svelte";
 </script>
 
-<main in:fade>
-  <div class="wrapper">
-    <h1>Settings</h1>
-  </div>
-</main>
+    <Button icon="save" size="large" />
+    <Button label="Save" icon="save" fullWidth size="small" />
 
 <style>
-  main {
-    flex: 1;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .wrapper {
-    max-width: 600px;
-    padding: 0 1rem;
-  }
-
   h1 {
     font-weight: 300;
     text-align: center;

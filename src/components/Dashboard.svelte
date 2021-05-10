@@ -1,43 +1,28 @@
 <script>
-    import { fade } from 'svelte/transition';
-    import Divider from "./share/Divider.svelte";
-    import Blinds from "./Blinds.svelte";
-    import Heatings from "./Heatings.svelte";
+  import { fade } from "svelte/transition";
+  import Divider from "./share/Divider.svelte";
+  import Blinds from "./Blinds.svelte";
+  import Heatings from "./Heatings.svelte";
 
-    export let blinds;
+  export let blinds;
 </script>
 
-<main in:fade>
-    <div class="wrapper">
-        <h1>Dashboard</h1>
-        <Divider deviderText="Markisen" />
-        <Blinds {blinds} />
-        <Divider deviderText="Heizungen" />
-        <Heatings />
-    </div>
-</main>
+    <Divider deviderText="Markisen" />
+    <Blinds {blinds} />
+    <Divider deviderText="Heizungen" />
+    <Heatings />
 
 <style>
+  h1 {
+    font-weight: 300;
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+  }
+
+  @media (min-width: 640px) {
     main {
-        flex: 1;
-        margin-left: auto;
-        margin-right: auto;
+      max-width: none;
     }
-    .wrapper {
-        max-width: 600px;
-        padding: 0 1rem;
-    }
-
-    h1 {
-        font-weight: 300;
-        text-align: center;
-        font-size: 2.5rem;
-        color: white;
-    }
-
-    @media (min-width: 640px) {
-        main {
-            max-width: none;
-        }
-    }
+  }
 </style>
