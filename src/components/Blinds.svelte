@@ -5,15 +5,15 @@
 
   let visible = false;
 
-  let toggleSetting = () => {
-    console.log("Toggle Settings");
+  let toggleSetting = (e) => {
+    console.log(e.target.dataset.id);
     visible = !visible;
   };
 </script>
 
 <div id="blinds">
   {#each blinds as blind (blind.id)}
-    <div class="blind" on:click={toggleSetting}>
+    <div class="blind" data-id="{blind.id}" on:click={toggleSetting}>
       {#if blind.dim === 0}
         <img src="/img/blinds-0.svg" alt="Rollo Gästezimmer" />
       {:else if blind.dim > 0 && blind.dim <= 25}
@@ -57,7 +57,7 @@
         </section>
       </div>
       <div class="blind-slider">
-        <input step="10" min="0" max="100" value="0" type="range" />
+        <input step="10" min="0" max="100" bind:value="{blind.dim}" type="range" />
       </div>
     </div>
   {/if}

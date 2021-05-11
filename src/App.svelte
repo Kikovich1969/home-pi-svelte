@@ -4,7 +4,7 @@
   import Footer from "./components/Footer.svelte";
 
   let year = new Date().getFullYear();
-  let currentPage = "Settings";
+  let currentPage = "Dashboard";
 
   let blinds = [
     {
@@ -22,7 +22,7 @@
     {
       id: 3,
       room: "Arbeitszimmer",
-      dim: 75,
+      dim: 100,
       power: 0,
     },
   ];
