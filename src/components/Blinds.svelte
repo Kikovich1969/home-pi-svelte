@@ -1,29 +1,50 @@
 <script>
+  import { onMount } from 'svelte';
+
   import Button from "./share/Button.svelte";
   import { fade } from "svelte/transition";
   export let blinds;
 
   let visible = false;
+  let width = '';
+  let height = '';
+
+  /* onMount(() => {
+    width = document.querySelector('.blind').clientWidth;
+    height = document.querySelector('.blind').clientHeight;
+    console.log(`width: ${width}`);
+    console.log(`height: ${height}`);
+  }) */
 
   let toggleSetting = (e) => {
     console.log(e.target.dataset.id);
     visible = !visible;
   };
+
+  const handleResize = (e) => {
+    width = document.querySelector('.blind').clientWidth;
+    height = document.querySelector('.blind').clientHeight;
+    console.log(width);
+    console.log(height);
+  }
+
 </script>
+
+<svelte:window on:resize={handleResize}/>
 
 <div id="blinds">
   {#each blinds as blind (blind.id)}
-    <div class="blind" data-id="{blind.id}" on:click={toggleSetting}>
+    <div class="blind" data-id="{blind.id}" on:click={toggleSetting} style="width: {width}px; height: {height}px;">
       {#if blind.dim === 0}
-        <img src="/img/blinds-0.svg" alt="Rollo Gästezimmer" />
+        <img src="/img/blinds-0.svg" alt="Rollo {blind.room}" in:fade out:fade />
       {:else if blind.dim > 0 && blind.dim <= 25}
-        <img src="/img/blinds-25.svg" alt="Rollo Gästezimmer" />
+        <img src="/img/blinds-25.svg" alt="Rollo {blind.room}" in:fade out:fade />
       {:else if blind.dim > 25 && blind.dim <= 50}
-        <img src="/img/blinds-50.svg" alt="Rollo Gästezimmer" />
+        <img src="/img/blinds-50.svg" alt="Rollo {blind.room}" in:fade out:fade />
       {:else if blind.dim > 50 && blind.dim <= 75}
-        <img src="/img/blinds-75.svg" alt="Rollo Gästezimmer" />
+        <img src="/img/blinds-75.svg" alt="Rollo {blind.room}" in:fade out:fade />
       {:else}
-        <img src="/img/blinds-100.svg" alt="Rollo Gästezimmer" />
+        <img src="/img/blinds-100.svg" alt="Rollo {blind.room}" in:fade out:fade />
       {/if}
     </div>
   {/each}
@@ -63,37 +84,6 @@
   {/if}
 {/each}
 
-<!-- {#if visible}
-  <div id="blind-settings" in:fade>
-    <h3>Arbeitszimmer</h3>
-    <div class="blind-controls">
-      <p>
-        Dim 100 <img
-          class="icon"
-          src="/img/percentage-solid.svg"
-          width="9"
-          alt="Percent"
-        />
-      </p>
-      <p>
-        0.6 Watt <img
-          class="icon"
-          src="/img/plug-solid.svg"
-          width="9"
-          alt="Plug"
-        />
-      </p>
-      <section class="blind-buttons">
-        <Button label="Open" />
-        <Button label="Close" />
-        <Button label="Set" />
-      </section>
-    </div>
-    <div class="blind-slider">
-      <input step="10" min="0" max="100" value="0" type="range" />
-    </div>
-  </div>
-{/if} -->
 <div class="bracket">
   <Button icon="lock_open" additionalStyles="position: relative; top: 10px;" />
 </div>
@@ -112,9 +102,11 @@
     margin-bottom: 0.5rem;
     border-radius: 6px;
     cursor: pointer;
+    position: relative;
   }
   .blind img {
-    width: 100%;
+    width: 80%;
+    position: absolute;
   }
   #blind-settings {
     background-color: #fff;
@@ -154,9 +146,5 @@
     margin: 0.2rem auto 1rem auto;
     text-align: center;
     max-height: 30px;
-  }
-  .bracket div {
-    position: relative;
-    bottom: -10px;
   }
 </style>
