@@ -6,45 +6,30 @@
   export let blinds;
 
   let visible = false;
-  let width = '';
-  let height = '';
-
-  /* onMount(() => {
-    width = document.querySelector('.blind').clientWidth;
-    height = document.querySelector('.blind').clientHeight;
-    console.log(`width: ${width}`);
-    console.log(`height: ${height}`);
-  }) */
 
   let toggleSetting = (e) => {
     console.log(e.target.dataset.id);
     visible = !visible;
   };
 
-  const handleResize = (e) => {
-    width = document.querySelector('.blind').clientWidth;
-    height = document.querySelector('.blind').clientHeight;
-    console.log(width);
-    console.log(height);
-  }
-
 </script>
 
-<svelte:window on:resize={handleResize}/>
+<!-- <svelte:window on:resize={handleResize}/> -->
 
 <div id="blinds">
   {#each blinds as blind (blind.id)}
-    <div class="blind" data-id="{blind.id}" on:click={toggleSetting} style="width: {width}px; height: {height}px;">
+    <div class="blind" data-id="{blind.id}" on:click={toggleSetting}>
+      <img src="/img/frame.svg" class="frame" alt="Window">
       {#if blind.dim === 0}
-        <img src="/img/blinds-0.svg" alt="Rollo {blind.room}" in:fade out:fade />
+        <img src="/img/blinds-0.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
       {:else if blind.dim > 0 && blind.dim <= 25}
-        <img src="/img/blinds-25.svg" alt="Rollo {blind.room}" in:fade out:fade />
+        <img src="/img/blinds-25.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
       {:else if blind.dim > 25 && blind.dim <= 50}
-        <img src="/img/blinds-50.svg" alt="Rollo {blind.room}" in:fade out:fade />
+        <img src="/img/blinds-50.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
       {:else if blind.dim > 50 && blind.dim <= 75}
-        <img src="/img/blinds-75.svg" alt="Rollo {blind.room}" in:fade out:fade />
+        <img src="/img/blinds-75.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
       {:else}
-        <img src="/img/blinds-100.svg" alt="Rollo {blind.room}" in:fade out:fade />
+        <img src="/img/blinds-100.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
       {/if}
     </div>
   {/each}
@@ -97,16 +82,15 @@
   }
   .blind {
     width: 31%;
-    background-color: #4a4a4a;
-    padding: 0.7rem;
     margin-bottom: 0.5rem;
-    border-radius: 6px;
     cursor: pointer;
     position: relative;
   }
-  .blind img {
+  .blind img.blind-img {
     width: 80%;
     position: absolute;
+    top: 10%;
+    left: 10%;
   }
   #blind-settings {
     background-color: #fff;
@@ -146,5 +130,8 @@
     margin: 0.2rem auto 1rem auto;
     text-align: center;
     max-height: 30px;
+  }
+  .frame{
+    width: 100%;
   }
 </style>
