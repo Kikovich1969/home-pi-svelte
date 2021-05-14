@@ -6,9 +6,11 @@
   export let blinds;
 
   let visible = false;
+  let preventTransform = true;
 
   let toggleSetting = (e) => {
     console.log(e.target.dataset.id);
+    preventTransform = false;
     visible = !visible;
   };
 
@@ -21,15 +23,15 @@
     <div class="blind" data-id="{blind.id}" on:click={toggleSetting}>
       <img src="/img/frame.svg" class="frame" alt="Window">
       {#if blind.dim === 0}
-        <img src="/img/blinds-0.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
-      {:else if blind.dim > 0 && blind.dim <= 25}
-        <img src="/img/blinds-25.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
-      {:else if blind.dim > 25 && blind.dim <= 50}
-        <img src="/img/blinds-50.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
-      {:else if blind.dim > 50 && blind.dim <= 75}
-        <img src="/img/blinds-75.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
-      {:else}
-        <img src="/img/blinds-100.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade />
+        <img src="/img/blinds-0.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
+      {:else if blind.dim > 0 && blind.dim <= 30}
+        <img src="/img/blinds-25.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
+      {:else if blind.dim > 30 && blind.dim <= 60}
+        <img src="/img/blinds-50.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
+      {:else if blind.dim > 60 && blind.dim <= 99}
+        <img src="/img/blinds-75.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
+      {:else if blind.dim === 100}
+        <img src="/img/blinds-100.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
       {/if}
     </div>
   {/each}
@@ -41,21 +43,9 @@
       <h3>{blind.room}</h3>
       <div class="blind-controls">
         <p>
-          Dim {blind.dim} <img
-            class="icon"
-            src="/img/percentage-solid.svg"
-            width="9"
-            alt="Percent"
-          />
-        </p>
+          Dim {blind.dim}%</p>
         <p>
-          {blind.power} Watt <img
-            class="icon"
-            src="/img/plug-solid.svg"
-            width="9"
-            alt="Plug"
-          />
-        </p>
+          {blind.power} Watt</p>
         <section class="blind-buttons">
           <Button label="Open" />
           <Button label="Close" />
@@ -119,9 +109,7 @@
     flex-basis: 40%;
     justify-content: space-between;
   }
-  .icon {
-    display: inline-block;
-  }
+  
   .bracket {
     border-left: 1px solid white;
     border-right: 1px solid white;
@@ -133,5 +121,8 @@
   }
   .frame{
     width: 100%;
+  }
+  .no-transform{
+    animation: none !important;
   }
 </style>
