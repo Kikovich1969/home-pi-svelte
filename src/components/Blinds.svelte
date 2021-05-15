@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
 
   import Button from "./share/Button.svelte";
   import { fade } from "svelte/transition";
@@ -8,32 +8,73 @@
   let visible = false;
   let preventTransform = true;
 
-  let toggleSetting = (e) => {
-    console.log(e.target.dataset.id);
+  let toggleSetting = (id) => {
+    console.log(id);
     preventTransform = false;
     visible = !visible;
   };
-
 </script>
 
 <!-- <svelte:window on:resize={handleResize}/> -->
 
 <div id="blinds">
   {#each blinds as blind (blind.id)}
-    <div class="blind" data-id="{blind.id}" on:click={toggleSetting}>
-      <img src="/img/frame.svg" class="frame" alt="Window">
-      {#if blind.dim === 0}
-        <img src="/img/blinds-0.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
-      {:else if blind.dim > 0 && blind.dim <= 30}
-        <img src="/img/blinds-25.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
-      {:else if blind.dim > 30 && blind.dim <= 60}
-        <img src="/img/blinds-50.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
-      {:else if blind.dim > 60 && blind.dim <= 99}
-        <img src="/img/blinds-75.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
-      {:else if blind.dim === 100}
-        <img src="/img/blinds-100.svg" class="blind-img" alt="Rollo {blind.room}" in:fade out:fade class:no-transform={preventTransform} />
-      {/if}
-    </div>
+    <button
+      class="blind-link"
+      on:click={() => {
+        toggleSetting(blind.id);
+      }}
+    >
+      <div class="blind" data-id={blind.id}>
+        <img src="/img/frame.svg" class="frame" alt="Window" />
+        {#if blind.dim === 0}
+          <img
+            src="/img/blinds-0.svg"
+            class="blind-img"
+            alt="Rollo {blind.room}"
+            in:fade
+            out:fade
+            class:no-transform={preventTransform}
+          />
+        {:else if blind.dim > 0 && blind.dim <= 30}
+          <img
+            src="/img/blinds-25.svg"
+            class="blind-img"
+            alt="Rollo {blind.room}"
+            in:fade
+            out:fade
+            class:no-transform={preventTransform}
+          />
+        {:else if blind.dim > 30 && blind.dim <= 60}
+          <img
+            src="/img/blinds-50.svg"
+            class="blind-img"
+            alt="Rollo {blind.room}"
+            in:fade
+            out:fade
+            class:no-transform={preventTransform}
+          />
+        {:else if blind.dim > 60 && blind.dim <= 99}
+          <img
+            src="/img/blinds-75.svg"
+            class="blind-img"
+            alt="Rollo {blind.room}"
+            in:fade
+            out:fade
+            class:no-transform={preventTransform}
+          />
+        {:else if blind.dim === 100}
+          <img
+            src="/img/blinds-100.svg"
+            class="blind-img"
+            alt="Rollo {blind.room}"
+            in:fade
+            out:fade
+            class:no-transform={preventTransform}
+          />
+        {/if}
+      </div>
+    </button>
   {/each}
 </div>
 
@@ -43,9 +84,11 @@
       <h3>{blind.room}</h3>
       <div class="blind-controls">
         <p>
-          Dim {blind.dim}%</p>
+          Dim {blind.dim}%
+        </p>
         <p>
-          {blind.power} Watt</p>
+          {blind.power} Watt
+        </p>
         <section class="blind-buttons">
           <Button label="Open" />
           <Button label="Close" />
@@ -53,7 +96,7 @@
         </section>
       </div>
       <div class="blind-slider">
-        <input step="10" min="0" max="100" bind:value="{blind.dim}" type="range" />
+        <input step="10" min="0" max="100" bind:value={blind.dim} type="range" />
       </div>
     </div>
   {/if}
@@ -71,7 +114,7 @@
     width: 100%;
   }
   .blind {
-    width: 31%;
+    width: 100%;
     margin-bottom: 0.5rem;
     cursor: pointer;
     position: relative;
@@ -109,7 +152,15 @@
     flex-basis: 40%;
     justify-content: space-between;
   }
-  
+
+  .blind-link {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    width: 31%;
+  }
+
   .bracket {
     border-left: 1px solid white;
     border-right: 1px solid white;
@@ -119,10 +170,10 @@
     text-align: center;
     max-height: 30px;
   }
-  .frame{
+  .frame {
     width: 100%;
   }
-  .no-transform{
+  .no-transform {
     animation: none !important;
   }
 </style>
