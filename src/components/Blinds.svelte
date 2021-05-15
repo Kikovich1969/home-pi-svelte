@@ -3,15 +3,21 @@
 
   import Button from "./share/Button.svelte";
   import { fade } from "svelte/transition";
+import { element } from "svelte/internal";
   export let blinds;
 
-  let visible = false;
-  let preventTransform = true;
+  let noTransition = false;
+
+  let hidden = [true, true, true];
+
+  function hideAll () {
+    hidden = [true, true, true];
+  };
 
   let toggleSetting = (id) => {
-    console.log(id);
-    preventTransform = false;
-    visible = !visible;
+    hideAll();
+    hidden[id - 1] = !hidden[id - 1];
+    hidden = [...hidden];
   };
 </script>
 
@@ -34,7 +40,7 @@
             alt="Rollo {blind.room}"
             in:fade
             out:fade
-            class:no-transform={preventTransform}
+            class:no-transition={noTransition}
           />
         {:else if blind.dim > 0 && blind.dim <= 30}
           <img
@@ -43,7 +49,7 @@
             alt="Rollo {blind.room}"
             in:fade
             out:fade
-            class:no-transform={preventTransform}
+            class:no-transition={noTransition}
           />
         {:else if blind.dim > 30 && blind.dim <= 60}
           <img
@@ -52,7 +58,7 @@
             alt="Rollo {blind.room}"
             in:fade
             out:fade
-            class:no-transform={preventTransform}
+            class:no-transition={noTransition}
           />
         {:else if blind.dim > 60 && blind.dim <= 99}
           <img
@@ -61,7 +67,7 @@
             alt="Rollo {blind.room}"
             in:fade
             out:fade
-            class:no-transform={preventTransform}
+            class:no-transition={noTransition}
           />
         {:else if blind.dim === 100}
           <img
@@ -70,7 +76,7 @@
             alt="Rollo {blind.room}"
             in:fade
             out:fade
-            class:no-transform={preventTransform}
+            class:no-transition={noTransition}
           />
         {/if}
       </div>
@@ -79,8 +85,8 @@
 </div>
 
 {#each blinds as blind (blind.id)}
-  {#if visible}
-    <div id="blind-settings" in:fade>
+  {#if !hidden[blind.id - 1]}
+    <div class="blind-settings" data-id={blind.id} in:fade>
       <h3>{blind.room}</h3>
       <div class="blind-controls">
         <p>
@@ -96,7 +102,13 @@
         </section>
       </div>
       <div class="blind-slider">
-        <input step="10" min="0" max="100" bind:value={blind.dim} type="range" />
+        <input
+          step="10"
+          min="0"
+          max="100"
+          bind:value={blind.dim}
+          type="range"
+        />
       </div>
     </div>
   {/if}
@@ -125,13 +137,16 @@
     top: 10%;
     left: 10%;
   }
-  #blind-settings {
+  .blind-settings {
     background-color: #fff;
     border-radius: 6px;
     color: #4a4a4a;
     padding: 0.3rem 1rem;
   }
-  #blind-settings h3 {
+  .hidden {
+    display: none;
+  }
+  .blind-settings h3 {
     font-weight: 300;
   }
   .blind-controls {
@@ -173,7 +188,7 @@
   .frame {
     width: 100%;
   }
-  .no-transform {
+  .no-transition {
     animation: none !important;
   }
 </style>
