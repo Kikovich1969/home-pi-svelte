@@ -4,7 +4,6 @@
   export let blinds;
 
   let noTransition = true;
-
   let hidden = [true, true, true];
 
   const hideAll = () => {
@@ -25,8 +24,6 @@
     hidden = [...hidden];
   };
 </script>
-
-<!-- <svelte:window on:resize={handleResize}/> -->
 
 <div id="blinds">
   {#each blinds as blind (blind.id)}
@@ -90,8 +87,15 @@
 </div>
 
 {#each blinds as blind (blind.id)}
-  {#if hidden[blind.id] === false}
+  {#if !hidden[blind.id]}
     <div class="blind-settings" data-id={blind.id} in:fade>
+      {#if blind.id === 0}
+        <span class="arrow-up arrow-is-left-top" />
+      {:else if blind.id === 1}
+        <span class="arrow-up arrow-is-center-top" />
+      {:else if blind.id === 2}
+        <span class="arrow-up arrow-is-right-top" />
+      {/if}
       <h3>{blind.room}</h3>
       <div class="blind-controls">
         <p>
@@ -113,8 +117,7 @@
           max="100"
           bind:value={blind.dim}
           type="range"
-          on:focus="{() => noTransition = false}"
-          on:blur="{() => noTransition = true}"
+          on:focus={() => console.log('focus')}
         />
       </div>
     </div>
@@ -149,6 +152,7 @@
     border-radius: 6px;
     color: #4a4a4a;
     padding: 0.3rem 1rem;
+    position: relative;
   }
   .hidden {
     display: none;
@@ -197,5 +201,30 @@
   }
   .no-transition {
     animation: none !important;
+  }
+  .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid white;
+  }
+  .arrow-is-left-top {
+    position: absolute;
+    top: -8px;
+    left: 15%;
+    transform: translateX(-4px);
+  }
+  .arrow-is-center-top {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-4px);
+  }
+  .arrow-is-right-top {
+    position: absolute;
+    top: -8px;
+    left: 84%;
+    transform: translateX(-4px);
   }
 </style>
