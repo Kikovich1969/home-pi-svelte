@@ -1,4 +1,6 @@
 <script>
+  import { fade } from "svelte/transition";
+  
   import Dashboard from "./Dashboard.svelte";
   import Settings from "./Settings.svelte";
   import History from "./History.svelte";
@@ -8,7 +10,8 @@
   export let blinds;
 </script>
 
-<main in:fade>
+<!-- <main in:fade> -->
+<main>
   <div class="wrapper">
     <h1>{currentPage}</h1>
     <div class="content-clock">

@@ -1,22 +1,27 @@
 <script>
-  import { onMount } from "svelte";
-
   import Button from "./share/Button.svelte";
   import { fade } from "svelte/transition";
-import { element } from "svelte/internal";
   export let blinds;
 
-  let noTransition = false;
+  let noTransition = true;
 
   let hidden = [true, true, true];
 
-  function hideAll () {
-    hidden = [true, true, true];
+  const hideAll = () => {
+    hidden.forEach((v, i) => {
+      hidden[i] = true;
+    });
+    hidden = [...hidden];
   };
 
   let toggleSetting = (id) => {
-    hideAll();
-    hidden[id - 1] = !hidden[id - 1];
+    hidden.forEach((v, i) => {
+      if (i === id) {
+        hidden[i] = !hidden[i];
+      } else {
+        hidden[i] = true;
+      }
+    });
     hidden = [...hidden];
   };
 </script>
@@ -85,7 +90,7 @@ import { element } from "svelte/internal";
 </div>
 
 {#each blinds as blind (blind.id)}
-  {#if !hidden[blind.id - 1]}
+  {#if hidden[blind.id] === false}
     <div class="blind-settings" data-id={blind.id} in:fade>
       <h3>{blind.room}</h3>
       <div class="blind-controls">
@@ -108,6 +113,8 @@ import { element } from "svelte/internal";
           max="100"
           bind:value={blind.dim}
           type="range"
+          on:focus="{() => noTransition = false}"
+          on:blur="{() => noTransition = true}"
         />
       </div>
     </div>

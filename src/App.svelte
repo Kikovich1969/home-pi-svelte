@@ -8,19 +8,19 @@
 
   let blinds = [
     {
-      id: 1,
+      id: 0,
       room: "Gästezimmer",
       dim: 100,
       power: 0.6,
     },
     {
-      id: 2,
+      id: 1,
       room: "Schlafzimmer",
       dim: 100,
       power: 0.6,
     },
     {
-      id: 3,
+      id: 2,
       room: "Arbeitszimmer",
       dim: 100,
       power: 0,
